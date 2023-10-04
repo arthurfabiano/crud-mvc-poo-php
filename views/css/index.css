@@ -2,6 +2,8 @@
     --color-white: #fff;
     --color-blue: dodgerblue;
     --color-red: crimson;
+    --color-dark4: #16a200;
+    --color-dark5: #c25403;
     --color-dark1: #1d1d1d;
     --color-dark2: #222222;
     --color-dark3: #353535;
@@ -47,6 +49,13 @@ body{
     width: 15vw;
 }
 
+.select{
+    padding: 6px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
+
 .button{
     text-decoration: none;
     color: var(--color-white);
@@ -55,6 +64,10 @@ body{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+}
+
+.btn-success{
+    background-color: var(--color-dark4);
 }
 
 .btn-edit{
@@ -90,5 +103,13 @@ body{
 
 .table tr:nth-child(even){
     background-color: var(--color-dark2);
+}
+
+.floatLeft{
+    float:left
+}
+
+div > div {
+    display: inline-block;
 }
 

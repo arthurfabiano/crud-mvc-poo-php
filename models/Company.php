@@ -1,13 +1,13 @@
 <?php
 
     require_once "./config/connect.php";
-    class ClientModel extends Connect{
+    class CompanyModel extends Connect{
         
         private $table;
 
         function __construct(){
             parent::__construct();
-            $this->table = "clients";
+            $this->table = "companies";
         }
 
         public function getAll(){
@@ -19,7 +19,7 @@
         public function search($data,$view=null){
             if($view == 'index')
             {
-                $sqlSelect = $this->connection->query("SELECT * FROM $this->table WHERE id = '$data' or name LIKE '%$data%' or email LIKE '%$data%' or phone LIKE '%$data%'");
+                $sqlSelect = $this->connection->query("SELECT * FROM $this->table WHERE id = '$data' or name LIKE '%$data%'");
             }
             else
             {
@@ -30,16 +30,16 @@
         }
 
         public function new($data){
-            $sqlUpdate = "INSERT INTO $this->table (name,email,phone) VALUES (:name, :email, :phone)";
-            $resultQuery = $this->connection->prepare($sqlUpdate)->execute(['name'=>$data['name'],'email'=>$data['email'],'phone'=>$data['phone']]);
+            $sqlUpdate = "INSERT INTO $this->table (name) VALUES (:name)";
+            $resultQuery = $this->connection->prepare($sqlUpdate)->execute(['name'=>$data['name']]);
             return $this->verifyReturn($resultQuery);
         }
 
         public function edit($data){
             if(strlen($data['phone']) <= 11)
             {
-                $sqlUpdate = "UPDATE $this->table SET name = :name, email = :email, phone = :phone WHERE id = :id";
-                $resultQuery = $this->connection->prepare($sqlUpdate)->execute(['id'=>$data['id'],'name'=>$data['name'],'email'=>$data['email'],'phone'=>$data['phone']]);
+                $sqlUpdate = "UPDATE $this->table SET name = :name WHERE id = :id";
+                $resultQuery = $this->connection->prepare($sqlUpdate)->execute(['id'=>$data['id'],'name'=>$data['name']]);
                 return $this->verifyReturn($resultQuery);
             }
             return false;

@@ -1,10 +1,10 @@
 <?php
 
-    // $nameController = $_GET['c'];
-    // include_once ('./controllers/'.$nameController.'Controller.php');
-    require_once ('./controllers/clientsController.php');
+    $nameController = isset($_GET['c']) ? $_GET['c'] . 'Controller' : 'CompaniesController';
+    include_once ('./controllers/'.$nameController.'.php');
+    // require_once('./controllers/CompaniesController.php');
 
-    $controller = new ClientsController();
+    $controller = new $nameController();
 
     $action = (isset($_GET['a']) || isset($_POST['a'])) ? (isset($_POST['a']) ? $_POST['a'] : $_GET['a']) : 'getAll';
     $message = isset($_GET['m']) ? $_GET['m'] : '';
