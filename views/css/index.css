@@ -87,6 +87,13 @@ body{
     width: 100%;
 }
 
+.txt-danger{
+    color: var(--color-red);
+}
+.txt-success{
+    color: var(--color-dark4);
+}
+
 .table{
     width: 70vw;
     text-align: left;

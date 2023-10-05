@@ -24,7 +24,10 @@
         <input type="hidden" name="a" value="search">
         <input class="button" type="submit" name="submit" value="Localizar...">
     </form>
-    <a class="button" href="./index.php?a=goToNew&c=billstopay">Nova Conta a Pagar</a>
+    <div>
+        <div> <a class="button" href="./index.php?c=companies">Lista Empresa</a> </div>
+        <div><a class="button btn-success" href="./index.php?a=goToNew&c=billstopay">Nova Conta a Pagar</a></div>
+    </div>
     <div class="content">
         <table class="table">
             <thead>
@@ -43,8 +46,8 @@
                         <td> <?= $data["id"]; ?> </td>
                         <td> <?= $data["nameEmpresa"]; ?> </td>
                         <td> <?= 'R$ ' . $data["valor"]; ?> </td>
-                        <td> <?= $data["data_pagar"]; ?> </td>
-                        <td> <?= $data["pago"]; ?> </td>
+                        <td> <?= date( 'd/m/Y' , strtotime( $data["data_pagar"])); ?> </td>
+                        <td> <?= $data["pago"] ? "<div class='txt-success'>Efetuado</div>" : "<div class='txt-danger'>Pendente</div>"; ?> </td>
                         <td>
                             <a class="button btn-edit" href="./index.php?c=billstopay&a=search&v=editCreate&search=<?= $data['id'] ?>">Editar</a>
                             <button class="button btn-delete" onclick="verifyDelete(<?= $data['id'] ?>)">Deletar</button> 
