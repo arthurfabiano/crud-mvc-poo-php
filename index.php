@@ -1,6 +1,8 @@
 <?php
 
     $nameController = isset($_GET['c']) ? $_GET['c'] . 'Controller' : 'CompaniesController';
+    if (isset($_GET['searchBillsToPay'])) $nameController = 'BillsToPayController';
+
     include_once ('./controllers/'.$nameController.'.php');
     // require_once('./controllers/CompaniesController.php');
 

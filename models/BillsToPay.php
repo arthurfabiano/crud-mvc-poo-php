@@ -17,7 +17,7 @@
         }
 
         public function getAll(){
-            $sqlSelect = $this->connection->query("SELECT $this->table.*, companies.name as nameEmpresa FROM bills_to_pay inner join companies on bills_to_pay.id_empresa = companies.id");
+            $sqlSelect = $this->connection->query("SELECT $this->table.*, companies.name as nameEmpresa FROM $this->table inner join companies on $this->table.id_empresa = companies.id");
             $resultQuery = $sqlSelect->fetchAll();
             return $resultQuery;
         }
@@ -25,12 +25,18 @@
         public function search($data,$view=null){
             if($view == 'index')
             {
-                $sqlSelect = $this->connection->query("SELECT * FROM $this->table WHERE id = '$data' or name LIKE '%$data%'");
+                $sqlSelect = $this->connection->query("SELECT $this->table.*, companies.name as nameEmpresa 
+                                                        FROM $this->table 
+                                                            inner join companies on $this->table.id_empresa = companies.id 
+                                                            WHERE companies.name LIKE '%$data%' 
+                                                               or valor LIKE '%$data%' 
+                                                               or data_pagar LIKE '%$data%'");
             }
             else
             {
                 $sqlSelect = $this->connection->query("SELECT * FROM $this->table WHERE id = '$data'");
             }
+            // die($sqlSelect);
             $resultQuery = $sqlSelect->fetchAll();
             return $resultQuery;
         }

@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="views/css/index.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script src="views/js/jquery-money/jquery.maskMoney.js" type="text/javascript"></script>
+
     <title>Contas a Pagar</title>
 </head>
 <body>
@@ -15,7 +19,7 @@
             <?php if (isset($resultData[0]['id'])) { ?>
             <div class="input-box">
                 <label>Nome Empresa</label><br>
-                <input class="input" type="text" placeholder="Escoha a Empresa" value="<?= isset($resultData[0]['name']) ? $resultData[0]['name'] : '' ?>" name="name" readonly>
+                <input class="input" type="text" placeholder="Escoha a Empresa" value="<?= $_GET['emp'] ?>" name="name" readonly>
             </div>
             <?php } else {?>
                 <div class="input-box">
@@ -63,30 +67,6 @@
             <input class="button btn-search" type="submit" name="submit" value="Salvar/Atualizar">
         </form>
     </div>
-<script>
-
-    function compareDates (date) {
-        let replace = date.replaceAll('-', '/')
-        let parts = replace.split('/')
-        let join = `${parts[2]},${parts[1]},${parts[0]}`
-        let vencimento = join.replaceAll(',', '/')
-        let today = new Date().toLocaleString().substr(0, 10) // pega a data atual
-
-        // compara se a data informada é maior que a data atual
-        // e retorna true ou false
-        if (vencimento < today)
-            return valor - (valor * (5/100))
-        else if (vencimento > today)
-            return valor + (valor * (10/100))
-        if (vencimento === today)
-           return valor;
-    }
-
-    let vencimento = document.querySelector("#vencimento").value
-    let valor = parseFloat(document.querySelector("#valor").value)
-    let result = parseFloat(compareDates(vencimento, valor)).toFixed(2) // Retorna false
-
-    document.getElementById("pagamento").value = result;
-</script>
+    <script src="views/js/geral.js" type="text/javascript"></script>
 </body>
 </html>

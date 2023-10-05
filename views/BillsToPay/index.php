@@ -22,7 +22,8 @@
     <form action="index.php">
         <input class="input" type="search" name="search" placeholder="Pesquisar">
         <input type="hidden" name="a" value="search">
-        <input class="button" type="submit" name="submit" value="Localizar...">
+        <input type="hidden" name="searchBillsToPay" value="billstopay">
+        <input class="button" type="submit" name="submit" value="Localizar">
     </form>
     <div>
         <div> <a class="button" href="./index.php?c=companies">Lista Empresa</a> </div>
@@ -49,7 +50,7 @@
                         <td> <?= date( 'd/m/Y' , strtotime( $data["data_pagar"])); ?> </td>
                         <td> <?= $data["pago"] ? "<div class='txt-success'>Efetuado</div>" : "<div class='txt-danger'>Pendente</div>"; ?> </td>
                         <td>
-                            <a class="button btn-edit" href="./index.php?c=billstopay&a=search&v=editCreate&search=<?= $data['id'] ?>">Editar</a>
+                            <a class="button btn-edit" href="./index.php?c=billstopay&emp=<?= $data['nameEmpresa'] ?>&a=search&v=editCreate&search=<?= $data['id'] ?>">Editar</a>
                             <button class="button btn-delete" onclick="verifyDelete(<?= $data['id'] ?>)">Deletar</button> 
                         </td>
                     </tr>

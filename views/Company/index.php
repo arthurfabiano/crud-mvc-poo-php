@@ -22,7 +22,7 @@
     <form action="index.php">
         <input class="input" type="search" name="search" placeholder="Pesquisar">
         <input type="hidden" name="a" value="search">
-        <input class="button" type="submit" name="submit" value="Localizar...">
+        <input class="button" type="submit" name="submit" value="Localizar">
     </form>
     <div>
         <div> <a class="button" href="./index.php?a=goToNew&c=companies">Novo Empresa</a> </div>
