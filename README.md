@@ -1,2 +1,2 @@
 # crud-mvc-php-poo-pdo
-Crud MVC com PHP POO e PDO
+Mini Framework Crud MVC com PHP POO e PDO
